@@ -7,10 +7,14 @@ wss.on("connection",(socket)=>{
     socket.on("message",(data)=>{
 
         const parsedData = data.toString();
-
+    
         console.log(`Received message: ${parsedData}`);
         
-        socket.send(parsedData);
+        if(parsedData === "ping") {
+            socket.send("pong");
+
+        }
+        
 
     })
 })
